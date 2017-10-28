@@ -1,0 +1,152 @@
+{
+	"preload": {
+		"helpers": ["countries"]
+	},
+	"postsubmit": {
+
+	},
+	"source": {
+		"type": "sql",
+		"table": "catalog_inventory",
+		"where": ["id"]
+	},
+	"fields": {
+		"title": {
+			"label": "Title",
+			"group": "Info",
+			"required": true
+		},
+		"slug": {
+			"label": "Slug",
+			"group": "Info",
+			"type": "slug",
+			"src": "title",
+			"required": true
+		},
+		"category": {
+			"label": "Category",
+			"group": "Info",
+			"type": "dataSelectorFromTable",
+			"table":"catalog_inventory_category",
+			"columns":"title,slug as value"
+		},
+		"model": {
+			"label": "Model",
+			"group": "Info",
+			"type": "dataSelectorFromTable",
+			"table":"catalog_inventory_models",
+			"columns":"concat(model_name,' [',model_group,']') as title,slug as value"
+		},
+		"brand_slug": {
+			"label": "Brand",
+			"group": "Info",
+			"type": "dataSelectorFromTable",
+			"table":"catalog_brands",
+			"columns":"name as title,slug as value"
+		},
+		"flags": {
+			"label": "Flags",
+			"group": "Info",
+			"type": "select",
+			"multiple":true,
+			"options": {
+				"general": "General",
+				"new": "New",
+				"featured": "Featured"
+			}
+		},
+		"gender": {
+			"label": "Gender",
+			"group": "Info",
+			"type": "select",
+			"options": {
+				"male": "Male",
+				"female": "Female"
+			}
+		},
+		"price": {
+			"label": "Selling Price",
+			"group": "Inventory",
+			"type": "number",
+			"default": 0
+		},
+		"price_cost": {
+			"label": "Cost Price",
+			"group": "Inventory",
+			"type": "number",
+			"default": 0
+		},
+		"stock": {
+			"label": "Current Stock",
+			"group": "Inventory",
+			"type": "number",
+			"default": 0
+		},
+		"stock_min": {
+			"label": "Minimum Stock",
+			"group": "Inventory",
+			"type": "number",
+			"default": 0
+		},
+		"sku": {
+			"label": "SKU",
+			"group": "Inventory",
+			"type": "barcode",
+			"placeholder": "Store Keeping Unit"
+		},
+		"upc": {
+			"label": "UPC",
+			"group": "Inventory",
+			"type": "barcode",
+			"placeholder": "Uniform Product Code"
+		},
+		"ean": {
+			"label": "EAN",
+			"group": "Inventory",
+			"type": "barcode",
+			"placeholder": "International Article Number"
+		},
+		"mpn": {
+			"label": "MPN",
+			"group": "Inventory",
+			"type": "barcode",
+			"placeholder": "Manufacturer Part Number"
+		},
+		"description_short": {
+			"label": "Summary",
+			"group": "Description",
+			"type": "richtextarea",
+			"width": "6"
+		},
+		"description_long": {
+			"label": "Description",
+			"group": "Description",
+			"type": "richtextarea",
+			"width": "6"
+		},
+		"sort_order": {
+			"label": "Sort Order",
+			"group": "Others",
+			"required": true,
+			"type": "number",
+			"default":1000
+		},
+		"blocked": {
+			"label": "Block On Website",
+			"group": "Others",
+			"required": true,
+			"type": "select",
+			"options": {
+				"": false,
+				"false": "Not Blocked",
+				"true": "Blocked"
+			}
+		},
+		"photos": {
+			"label": "Product Photos",
+			"group": "Photos",
+			"type": "photos",
+			"multiple":true
+		}
+	}
+}

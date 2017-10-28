@@ -1,0 +1,36 @@
+{
+	"postsubmit": {
+
+	},
+	"source": {
+		"type": "sql",
+		"table": "catalog_inventory_models",
+		"where": ["id"]
+	},
+	"fields": {
+		"model_name": {
+			"label": "Model Name",
+			"required": true
+		},
+		"slug": {
+			"label": "Slug",
+			"type": "slug",
+			"src": "model_name",
+			"required": true
+		},
+		"model_group": {
+			"label": "Family"
+		},
+		"brand_slug": {
+			"label": "Brand",
+			"type": "dataSelectorFromTable",
+			"table":"catalog_brands",
+			"columns":"name as title,slug as value"
+		},
+		"description": {
+			"label": "Description\/Notes",
+			"type": "textarea",
+			"width": "12"
+		}
+	}
+}

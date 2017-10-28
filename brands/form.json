@@ -1,0 +1,58 @@
+{
+	"preload": {
+		"helpers": ["countries"]
+	},
+	"postsubmit": {
+
+	},
+	"source": {
+		"type": "sql",
+		"table": "catalog_brands",
+		"where": ["id"]
+	},
+	"fields": {
+		"name": {
+			"label": "Brand Name",
+			"required": true
+		},
+		"slug": {
+			"label": "Slug",
+			"type": "slug",
+			"src": "name",
+			"required": true
+		},
+		"category": {
+			"label": "Category"
+		},
+		"flags": {
+			"label": "Flags",
+			"searchable": true,
+			"type": "select",
+			"options": {
+				"": false,
+				"general": "General",
+				"exclusive": "Exclusive",
+				"hot": "Hot"
+			}
+		},
+		"description": {
+			"label": "Description\/Notes",
+			"type": "textarea",
+			"width": "6"
+		},
+		"address": {
+			"label": "Address",
+			"type": "textarea",
+			"width": "6"
+		},
+		"blocked": {
+			"label": "Blocked",
+			"required": true,
+			"type": "select",
+			"options": {
+				"false": "Not Blocked",
+				"true": "Blocked"
+			}
+		}
+	}
+}
